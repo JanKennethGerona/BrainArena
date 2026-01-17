@@ -1,19 +1,19 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Header from './components/Header'
-import Home from './components/Home'
+import Landing from './components/Landing'
+import Login from './components/Login'
+import Dashboard from './components/Dashboard'
 import './App.css'
 
 function App() {
   return (
     <Router>
       <div className="app">
-        <Header />
-        <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </main>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
       </div>
     </Router>
   )
