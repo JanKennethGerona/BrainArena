@@ -1,0 +1,28 @@
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  background-color: #EBEFF5;
+  padding: 1rem;
+  border-radius: 21px;
+  height: calc(2 * 300px + 1.5rem);
+  overflow-y: auto;
+  scrollbar-width: none;
+  grid-auto-rows: 240px;
+}
+
+.courses-grid::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  .courses-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+}

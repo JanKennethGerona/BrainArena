@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import Button from '../components/Button'
 import logo from '../assets/images/6.png'
 import './Landing.css'
 
@@ -7,12 +8,10 @@ function Landing() {
   const navigate = useNavigate()
 
   const handleLogin = () => {
-    // Navigate to login page (you'll create this later)
     navigate('/login')
   }
 
   const handleCreateAccount = () => {
-    // Navigate to login page with register mode enabled
     navigate('/login', { state: { isRegister: true } })
   }
 
@@ -27,12 +26,12 @@ function Landing() {
         <p className="tagline">LEARNING MEETS <br />COMPETITION</p>
         
         <div className="button-group">
-          <button className="btn btn-primary" onClick={handleLogin}>
+          <Button variant="primary" onClick={handleLogin}>
             LOG IN
-          </button>
-          <button className="btn btn-secondary" onClick={handleCreateAccount}>
+          </Button>
+          <Button variant="secondary" onClick={handleCreateAccount}>
             CREATE NEW ACCOUNT
-          </button>
+          </Button>
         </div>
       </div>
     </div>

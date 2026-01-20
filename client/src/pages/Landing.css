@@ -67,44 +67,11 @@
   margin: 0 auto;
 }
 
-.btn {
+.button-group .btn {
   padding: 1.25rem 2rem;
   font-size: 1rem;
-  font-weight: 500;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-
-.btn-primary {
-  background-color: #00B2CA;
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #00B2CA;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
-  opacity: 0.7;
-}
-
-.btn-secondary {
-  background-color: #fdfcfd;
-  color: #222222;
-  border: #D7DDE5 solid 1px;
-}
-
-.btn-secondary:hover {
-  background-color: #fdfcfd;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.btn:active {
-  transform: translateY(0);
 }
 
 /* Responsive design */

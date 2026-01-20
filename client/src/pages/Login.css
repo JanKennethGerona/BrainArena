@@ -39,60 +39,45 @@
   padding: 2.5rem 2rem;
 }
 
-.input-group {
-  margin-bottom: 1rem;
-  transition: all 0.4s ease;
+.login-form .input-group {
+  margin-bottom: 1.5rem;
 }
 
-.input-group.repeat-password {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  margin-bottom: 0;
-}
-
-.input-group.repeat-password.show {
-  max-height: 100px;
-  overflow: visible;
-  opacity: 1;
-  margin-bottom: 1rem;
-}
-
-.input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.input-icon {
-  position: absolute;
-  left: 1rem;
-  pointer-events: none;
-}
-
-.login-input {
-  width: 100%;
-  padding: 1rem 1rem 1rem 3rem;
-  font-size: 1rem;
-  font-family: 'Inter', sans-serif;
-  border: none;
-  border-radius: 14px;
+.login-form .text-field-input {
   background-color: #EBEFF5;
   color: #777777;
-  transition: all 0.3s ease;
+  border: none;
+  padding: 1rem 1rem 1rem 3rem;
+  border-radius: 14px;
 }
 
-.login-input::placeholder {
+.login-form .text-field-input::placeholder {
   color: #777777;
 }
 
-.login-input:focus {
-  outline: none;
+.login-form .text-field-input:focus {
   box-shadow: 0 0 8px rgba(52, 52, 52, 0.5);
   background-color: #fdfcfd;
   color: #282c34;
+  border-color: transparent;
 }
 
+.repeat-password-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.repeat-password-wrapper.show {
+  max-height: 100px;
+  overflow: visible;
+  opacity: 1;
+}
+
+.repeat-password-wrapper .input-group {
+  margin-bottom: 0;
+}
 
 .login-footer {
   display: flex;
@@ -126,30 +111,10 @@
   text-decoration: underline;
 }
 
-.login-btn {
+.login-btn-full {
   width: 100%;
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
-  background-color: #00B2CA;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-}
-
-.login-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 178, 202, 0.3);
-  opacity: 0.9;
-}
-
-.login-btn:active {
-  transform: translateY(0);
 }
 
 /* Responsive design */

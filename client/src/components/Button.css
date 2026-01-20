@@ -1,0 +1,42 @@
+.btn {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background-color: #00B2CA;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: rgba(0, 156, 177, 0.763);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #1a1a1a;
+  border: 2px solid #EBEFF5;
+}
+
+.btn-secondary:hover {
+  background-color: #EBEFF5;
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.btn-text {
+  background-color: transparent;
+  color: #00B2CA;
+  padding: 0.5rem 1rem;
+}
+
+.btn-text:hover {
+  background-color: #f0f0f0;
+}

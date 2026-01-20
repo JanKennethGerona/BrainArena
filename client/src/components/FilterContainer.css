@@ -1,0 +1,92 @@
+.filter-container {
+  background: white;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: 1rem 1rem 0 1rem;
+}
+
+.filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  max-height: 20px;
+}
+
+.filter-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.clear-filters-btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #00B2CA;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.clear-filters-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.filter-tags {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.75rem;
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: thin;
+  padding-bottom: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.filter-tags::-webkit-scrollbar {
+  height: 6px;
+}
+
+.filter-tags::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.filter-tags::-webkit-scrollbar-thumb {
+  background: #00B2CA;
+  border-radius: 10px;
+}
+
+.filter-tag {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #555;
+  background-color: #E5E7EB;
+  padding: 0.45rem 0.9rem;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.filter-tag:hover {
+  background-color: #D4E9ED;
+  transform: translateY(-2px);
+}
+
+.filter-tag.active {
+  background-color: #00B2CA;
+  color: white;
+  border-color: #00B2CA;
+  box-shadow: 0 2px 8px rgba(0, 178, 202, 0.3);
+}
