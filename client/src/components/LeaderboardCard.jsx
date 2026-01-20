@@ -1,9 +1,16 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './LeaderboardCard.css'
 
 function LeaderboardCard({ leaderboard }) {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate('/leaderboard')
+  }
+
   return (
-    <div className="leaderboard-card">
+    <div className="leaderboard-card" onClick={handleClick}>
       <div className="LeaderB-header">
         <h3 className="card-title">
           <img src="./src/assets/images/Icons/swords.png" alt="Swords" style={{ width: '20px', height: '20px', marginRight: '8px', verticalAlign: 'middle' }} /> 

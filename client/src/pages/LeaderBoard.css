@@ -1,0 +1,135 @@
+.leaderboard-page {
+  min-height: 100vh;
+  background-color: #fdfcfd;
+  padding: 2rem;
+}
+
+.leaderboard-header {
+  max-width: 1000px;
+  margin: 0 auto 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #00B2CA;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: opacity 0.2s ease;
+  width: fit-content;
+}
+
+.back-button:hover {
+  opacity: 0.7;
+}
+
+.title-dropdown-container {
+  position: relative;
+  text-align: center;
+}
+
+.title-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin: 0 auto;
+  transition: opacity 0.2s ease;
+}
+
+.title-dropdown:hover {
+  opacity: 0.8;
+}
+
+.title-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.page-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #00B2CA;
+  margin: 0;
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 0.5rem;
+  min-width: 250px;
+  z-index: 100;
+  margin-top: 0.5rem;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-item.active {
+  background-color: #D4E9ED;
+  color: #00B2CA;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .leaderboard-page {
+    padding: 1rem;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .title-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .dropdown-menu {
+    min-width: 200px;
+  }
+}

@@ -1,0 +1,100 @@
+.leaderboard-table-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+}
+
+.header-column {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #00B2CA;
+  text-align: center;
+}
+
+.table-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 1rem;
+  padding: 1.25rem 2rem;
+  background-color: #EBEFF5;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.table-row:hover {
+  transform: translateX(3px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.rank-cell {
+  justify-content: flex-start;
+  gap: 0.75rem;
+}
+
+.rank-number {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  min-width: 40px;
+}
+
+.player-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.score-cell {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.date-cell {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #777777;
+}
+
+@media (max-width: 768px) {
+  .table-header,
+  .table-row {
+    grid-template-columns: 1.5fr 1fr 1.2fr;
+    padding: 1rem;
+  }
+
+  .header-column {
+    font-size: 0.85rem;
+  }
+
+  .rank-number,
+  .player-name,
+  .score-cell {
+    font-size: 0.85rem;
+  }
+
+  .date-cell {
+    font-size: 0.8rem;
+  }
+}

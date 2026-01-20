@@ -1,0 +1,118 @@
+.history-table-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.history-table-header {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr 1fr 1.2fr;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+}
+
+.history-header-column {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #00B2CA;
+  text-align: center;
+}
+
+.history-table-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.history-table-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr 1fr 1.2fr;
+  gap: 1rem;
+  padding: 1.25rem 2rem;
+  background-color: #EBEFF5;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.history-table-row:hover {
+  transform: translateX(3px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.history-table-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.category-cell {
+  justify-content: flex-start;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.score-cell {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.duration-cell {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.ranking-cell {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #00B2CA;
+}
+
+.date-cell {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #777777;
+}
+
+@media (max-width: 1024px) {
+  .history-table-header,
+  .history-table-row {
+    grid-template-columns: 1.3fr 0.8fr 1fr 0.8fr 1fr;
+    padding: 1rem 1.5rem;
+  }
+
+  .history-header-column {
+    font-size: 0.9rem;
+  }
+
+  .category-cell,
+  .score-cell,
+  .duration-cell,
+  .ranking-cell,
+  .date-cell {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .history-table-header,
+  .history-table-row {
+    grid-template-columns: 1.2fr 0.8fr 1fr;
+    padding: 1rem;
+  }
+
+  .history-header-column:nth-child(3),
+  .history-header-column:nth-child(4),
+  .history-table-cell:nth-child(3),
+  .history-table-cell:nth-child(4) {
+    display: none;
+  }
+
+  .history-header-column {
+    font-size: 0.85rem;
+  }
+}
