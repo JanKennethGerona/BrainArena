@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import PlayerCard from '../components/PlayerCard'
 import HistoryCard from '../components/HistoryCard'
@@ -11,13 +11,42 @@ function Dashboard() {
   const navigate = useNavigate()
   const [activeFilters, setActiveFilters] = useState([])
 
-  // Sample data - replace with real data from your backend
-  const playerData = {
-    name: 'Player',
-    level: 9999,
-    progress: 75,
-    avatar: './src/assets/images/placeholders/ChatGPT Image Jan 13, 2026, 12_32_47 PM.png'
+  // Get player data from localStorage or use defaults
+  const getPlayerData = () => {
+    const playerDataStr = localStorage.getItem('playerData')
+    if (playerDataStr) {
+      return JSON.parse(playerDataStr)
+    }
+    // Default player data
+    const defaultData = {
+      name: 'Player',
+      level: 1,
+      exp: 0,
+      progress: 0,
+      avatar: './src/assets/images/placeholders/ChatGPT Image Jan 13, 2026, 12_32_47 PM.png'
+    }
+    localStorage.setItem('playerData', JSON.stringify(defaultData))
+    return defaultData
   }
+
+  const [playerData, setPlayerData] = useState(getPlayerData())
+
+  // Reload player data when component mounts or when returning to dashboard
+  useEffect(() => {
+    const updatedPlayerData = getPlayerData()
+    setPlayerData(updatedPlayerData)
+
+    // Check if player leveled up
+    const levelUpInfoStr = localStorage.getItem('levelUpInfo')
+    if (levelUpInfoStr) {
+      const levelUpInfo = JSON.parse(levelUpInfoStr)
+      if (levelUpInfo.leveledUp) {
+        alert(`Congratulations! You leveled up to Level ${levelUpInfo.newLevel}!`)
+        // Clear the flag
+        localStorage.removeItem('levelUpInfo')
+      }
+    }
+  }, [])
 
   const history = [
     { subject: 'Math', score: 10456 },
@@ -44,56 +73,56 @@ function Dashboard() {
       title: 'Mathematics',
       items: 10,
       image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400',
-      tags: ['40s', 'Medium']
+      tags: ['30s', 'MCQ', 'hint']
     },
     {
       id: 2,
       title: 'Science',
       items: 20,
       image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400',
-      tags: ['40s', 'Identification']
+      tags: ['20s', 'Identification']
     },
     {
       id: 3,
       title: 'Comprog',
       items: 10,
       image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400',
-      tags: ['Easy', '40s', 'MCQ']
+      tags: ['10s', 'MCQ', 'hint']
     },
     {
       id: 4,
       title: 'ITC',
       items: 10,
       image: 'https://images.unsplash.com/photo-1484788984921-03950022c9ef?w=400',
-      tags: ['40s', 'Medium']
+      tags: ['30s', 'MCQ', 'Identification']
     },
     {
       id: 5,
       title: 'Theo',
       items: 40,
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
-      tags: ['40s', 'MCQ']
+      tags: ['20s', 'MCQ']
     },
     {
       id: 6,
       title: 'PE',
       items: 100,
       image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400',
-      tags: ['MCQ', 'Identification']
+      tags: ['30s', 'MCQ', 'Identification', 'hint']
     },
     {
       id: 7,
       title: 'PE',
       items: 100,
       image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400',
-      tags: ['MCQ', 'Identification']
+      tags: ['10s', 'Identification']
     }, 
     {
       id: 8,
       title: 'PE',
       items: 100,
       image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400',
-      tags: ['MCQ', 'Identification']
+      tags: ['20s', 'MCQ']
     },
     {
       id: 9,

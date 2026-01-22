@@ -1,9 +1,9 @@
 import React from 'react'
 import './CourseCard.css'
 
-function CourseCard({ course }) {
+function CourseCard({ course, onClick }) {
   return (
-    <div className="course-card">
+    <div className="course-card" onClick={onClick}>
       <div className="course-image" style={{ backgroundImage: `url(${course.image})` }}></div>
       <div className="course-content">
         <h4 className="course-title">{course.title}</h4>

@@ -1,0 +1,135 @@
+.quiz-details-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.quiz-details-modal {
+  background: #FFFFFF;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 700px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.quiz-details-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: #1a1a1a;
+  color: #FFFFFF;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.quiz-details-close:hover {
+  background: #333333;
+}
+
+.quiz-details-header {
+  background: #00B2CA;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.quiz-details-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  background-color: #E5E7EB;
+  flex-shrink: 0;
+}
+
+.quiz-details-info {
+  flex: 1;
+}
+
+.quiz-details-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 0.5rem 0;
+}
+
+.quiz-details-items {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.125rem;
+  color: #FFFFFF;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.quiz-details-content {
+  padding: 2rem;
+}
+
+.quiz-details-section {
+  margin-bottom: 2rem;
+}
+
+.quiz-details-section:last-of-type {
+  margin-bottom: 2.5rem;
+}
+
+.quiz-details-section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 1rem 0;
+}
+
+.quiz-details-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555555;
+  margin: 0;
+}
+
+.quiz-details-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.quiz-details-tag {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: #E0E7F1;
+  color: #1a1a1a;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.quiz-details-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 2px solid #E5E7EB;
+}

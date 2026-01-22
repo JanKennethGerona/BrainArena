@@ -5,6 +5,8 @@ import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import LeaderBoard from './pages/LeaderBoard'
 import History from './pages/History'
+import QuizPage from './pages/QuizPage'
+import QuizSummary from './pages/QuizSummary'
 import './App.css'
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/leaderboard" element={<LeaderBoard />} />
           <Route path="/history" element={<History />} />
+          <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/quiz-summary" element={<QuizSummary />} />
         </Routes>
       </div>
     </Router>

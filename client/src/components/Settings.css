@@ -1,0 +1,180 @@
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.settings-modal {
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 3rem;
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.settings-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: #1a1a1a;
+  color: #FFFFFF;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.settings-close:hover {
+  background: #333333;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.settings-header-icon {
+  width: 50px;
+  height: 50px;
+}
+
+.settings-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #06B6D4;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.settings-content {
+  background: #E0E7F1;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settings-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.settings-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.settings-controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.theme-button {
+  background: #FFFFFF;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.theme-button:hover {
+  transform: scale(1.05);
+}
+
+.theme-button.active {
+  background: #06B6D4;
+}
+
+.bgm-button {
+  background: #FFFFFF;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.bgm-button:hover {
+  transform: scale(1.05);
+}
+
+.theme-icon,
+.volume-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.settings-select {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #FFFFFF;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 220px;
+}
+
+.settings-select:focus {
+  outline: 2px solid #06B6D4;
+}
+
+.settings-date-input,
+.settings-time-input {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #FFFFFF;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.settings-date-input:focus,
+.settings-time-input:focus {
+  outline: 2px solid #06B6D4;
+}
