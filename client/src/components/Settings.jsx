@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import './Settings.css'
 import settingsIcon from '../assets/images/Icons/SettingsGreeen.png'
-import lightbulbIcon from '../assets/images/Icons/lightbulb-fill.png'
+import lightbulbIcon from '../assets/images/Icons/lightbulb-fill2.png'
 import musicIcon from '../assets/images/Icons/music-2-fill.png'
 import timezoneIcon from '../assets/images/Icons/time-zone-fill.png'
 import languageIcon from '../assets/images/Icons/character-recognition-line.png'
 import moonIcon from '../assets/images/Icons/moon-clear-fill.png'
 import sunIcon from '../assets/images/Icons/sun-line.png'
 import volumeOffIcon from '../assets/images/Icons/volume-off-vibrate-fill.png'
+import volumeUpIcon from '../assets/images/Icons/volume-up-fill.png'
 
 function Settings({ isOpen, onClose }) {
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -89,7 +90,7 @@ function Settings({ isOpen, onClose }) {
                 onClick={() => setIsBGMEnabled(!isBGMEnabled)}
               >
                 {isBGMEnabled ? (
-                  <img src={musicIcon} alt="Mute" className="volume-icon" />
+                  <img src={volumeUpIcon} alt="Mute" className="volume-icon" />
                 ) : (
                   <img src={volumeOffIcon} alt="Unmute" className="volume-icon" />
                 )}
