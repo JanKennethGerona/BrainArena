@@ -38,6 +38,8 @@ jobs:
         run: |
           cd client
           npm run build
+        env:
+          NODE_ENV: production
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -45,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./client/dist
+          path: './client/dist'
 
   deploy:
     environment:
