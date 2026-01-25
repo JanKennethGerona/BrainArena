@@ -1,62 +1,54 @@
-import express from 'express'
-import cors from 'cors'
-import dotenv from 'dotenv'
-import mysql from 'mysql2/promise'
+import 'dotenv/config';
+import express from 'express';
+import mysql from 'mysql2';
+import cors from 'cors';
 
-dotenv.config()
-
-const app = express()
-const PORT = process.env.PORT || 5000
+const app = express();
+const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors())
-app.use(express.json())
+app.use(cors());
+app.use(express.json());
 
-// MySQL connection pool
-const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'brainarena',
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-})
+// Database connection
+const db = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT || 3306
+});
 
-// Test database connection
-pool.getConnection()
-  .then(connection => {
-    console.log('✓ MySQL database connected')
-    connection.release()
-  })
-  .catch(err => {
-    console.error('✗ MySQL connection error:', err.message)
-  })
-
-// Routes
-app.get('/api', (req, res) => {
-  res.json({ message: 'Welcome to BrainArena API' })
-})
-
-app.get('/api/health', async (req, res) => {
-  try {
-    await pool.query('SELECT 1')
-    res.json({ status: 'healthy', database: 'connected' })
-  } catch (error) {
-    res.status(500).json({ status: 'unhealthy', database: 'disconnected', error: error.message })
+// Connect to database
+db.connect((err) => {
+  if (err) {
+    console.error('Database connection failed:', err);
+    return;
   }
-})
+  console.log('✅ Connected to Clever Cloud MySQL database!');
+});
 
-// Example database query
-app.get('/api/data', async (req, res) => {
-  try {
-    const [rows] = await pool.query('SELECT * FROM example_table LIMIT 10')
-    res.json(rows)
-  } catch (error) {
-    res.status(500).json({ error: error.message })
-  }
-})
+// Test route
+app.get('/api/test', (req, res) => {
+  db.query('SELECT 1 + 1 AS result', (err, results) => {
+    if (err) {
+      return res.status(500).json({ 
+        message: 'Backend is working!', 
+        database: 'Connection failed',
+        error: err.message 
+      });
+    }
+    res.json({ 
+      message: 'Backend is working!', 
+      database: 'Connected and tested',
+      queryResult: results[0].result 
+    });
+  });
+});
 
+// Start server
 app.listen(PORT, () => {
-  console.log(`✓ Server running on port ${PORT}`)
-})
+  console.log(`🚀 Server running on port ${PORT}`);
+});
+
+export default db;
