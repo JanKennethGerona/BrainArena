@@ -12,7 +12,7 @@ const corsOptions = {
   origin: [
     'https://www.brain-arena.games',
     'https://brain-arena.games',
-    'https://brainarena.vercel.app',
+    'https://brain-arena1.vercel.app',
     'http://localhost:3000' // Keep this so you can still test locally
   ],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
