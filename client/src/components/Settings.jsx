@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import './Settings.css'
-import settingsIcon from '../assets/images/Icons/SettingsGreeen.png'
-import lightbulbIcon from '../assets/images/Icons/lightbulb-fill.png'
-import musicIcon from '../assets/images/Icons/music-2-fill.png'
-import timezoneIcon from '../assets/images/Icons/time-zone-fill.png'
-import languageIcon from '../assets/images/Icons/character-recognition-line.png'
-import moonIcon from '../assets/images/Icons/moon-clear-fill.png'
-import sunIcon from '../assets/images/Icons/sun-line.png'
-import volumeOffIcon from '../assets/images/Icons/volume-off-vibrate-fill.png'
+import settingsIcon from '../assets/images/Icons/settings/settings.svg'
+import lightbulbIcon from '../assets/images/Icons/settings/btheme.svg'
+import musicIcon from '../assets/images/Icons/settings/bsound.svg'
+import timezoneIcon from '../assets/images/Icons/settings/bdate.svg'
+import languageIcon from '../assets/images/Icons/settings/blanguage.svg'
+import moonIcon from '../assets/images/Icons/settings/bnight.svg'
+import sunIcon from '../assets/images/Icons/settings/bsun.svg'
+import invertsunIcon from '../assets/images/Icons/settings/wsun.svg'
+import invertmoonIcon from '../assets/images/Icons/settings/wnight.svg'
+import volumeOffIcon from '../assets/images/Icons/settings/bvolume.svg'
 
 function Settings({ isOpen, onClose }) {
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -15,6 +17,15 @@ function Settings({ isOpen, onClose }) {
   const [selectedDate, setSelectedDate] = useState('2026-01-12')
   const [selectedTime, setSelectedTime] = useState('20:00')
   const [selectedLanguage, setSelectedLanguage] = useState('English')
+  const [isClosing, setIsClosing] = useState(false)
+
+  const handleClose = () => {
+    setIsClosing(true)
+    setTimeout(() => {
+      setIsClosing(false)
+      onClose()
+    }, 200) // Match animation duration
+  }
 
   const languages = [
     'English',
@@ -47,9 +58,9 @@ function Settings({ isOpen, onClose }) {
   if (!isOpen) return null
 
   return (
-    <div className="settings-overlay" onClick={onClose}>
+    <div className={`settings-overlay ${isClosing ? 'closing' : ''}`} onClick={handleClose}>
       <div className="settings-modal" onClick={(e) => e.stopPropagation()}>
-        <button className="settings-close" onClick={onClose}>✕</button>
+        <button className="settings-close" onClick={handleClose}>✕</button>
         
         <div className="settings-header">
           <img src={settingsIcon} alt="Settings" className="settings-header-icon" />
@@ -67,13 +78,13 @@ function Settings({ isOpen, onClose }) {
                 className={`theme-button ${isDarkMode ? 'active' : ''}`}
                 onClick={() => setIsDarkMode(true)}
               >
-                <img src={moonIcon} alt="Dark" className="theme-icon" />
+                <img src={isDarkMode ? invertmoonIcon : moonIcon} alt="Dark" className="theme-icon" />
               </button>
               <button 
                 className={`theme-button ${!isDarkMode ? 'active' : ''}`}
                 onClick={() => setIsDarkMode(false)}
               >
-                <img src={sunIcon} alt="Light" className="theme-icon" />
+                <img src={!isDarkMode ? invertsunIcon : sunIcon} alt="Light" className="theme-icon" />
               </button>
             </div>
           </div>

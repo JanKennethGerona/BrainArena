@@ -1,12 +1,37 @@
 .history-page {
   min-height: 100vh;
-  background-color: #fdfcfd;
+  background-color: #0FA8BD;
   padding: 2rem;
+  position: relative; /* Added for layering context */
+}
+
+/* New background wrapper for GridScan */
+.history-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+/* New content wrapper */
+.history-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  padding: 2.5em;
+  margin: 0 auto;
+  background: rgba(253, 252, 253, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.9);
 }
 
 .history-page-header {
-  max-width: 1000px;
-  margin: 0 auto 1rem;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -44,8 +69,8 @@
 }
 
 .history-icon {
-  width: 40px;
-  height: 40px;
+  width: 5em;
+  height: 5em;
   object-fit: contain;
 }
 

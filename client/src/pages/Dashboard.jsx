@@ -1,15 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { isAuthenticated, getUser, logout } from '../utils/auth';
 import PlayerCard from '../components/PlayerCard'
 import HistoryCard from '../components/HistoryCard'
 import LeaderboardCard from '../components/LeaderboardCard'
 import FilterContainer from '../components/FilterContainer'
 import CoursesGrid from '../components/CoursesGrid'
 import './Dashboard.css'
+import GridScan from '../components/GridScan';
+
+
 
 function Dashboard() {
   const navigate = useNavigate()
+  const [user, setUser] = useState(null)
   const [activeFilters, setActiveFilters] = useState([])
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      navigate('/login')
+      return
+    }
+
+    const userData = getUser()
+    setUser(userData)
+  }, [navigate])
 
   // Get player data from localStorage or use defaults
   const getPlayerData = () => {
@@ -47,6 +62,11 @@ function Dashboard() {
       }
     }
   }, [])
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login')
+  }
 
   const history = [
     { subject: 'Math', score: 10456 },
@@ -116,7 +136,7 @@ function Dashboard() {
       items: 100,
       image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=400',
       tags: ['10s', 'Identification']
-    }, 
+    },
     {
       id: 8,
       title: 'PE',
@@ -143,7 +163,7 @@ function Dashboard() {
 
   // Toggle filter
   const toggleFilter = (tag) => {
-    setActiveFilters(prev => 
+    setActiveFilters(prev =>
       prev.includes(tag)
         ? prev.filter(t => t !== tag)
         : [...prev, tag]
@@ -155,19 +175,37 @@ function Dashboard() {
     setActiveFilters([])
   }
 
+  if (!user) {
+    return <div>Loading...</div>
+  }
+
   return (
     <div className="dashboard">
+      <div className="dashboard-bg">
+        <GridScan
+          sensitivity={0.55}
+          lineThickness={1}
+          linesColor="#ffffff"
+          gridScale={0.1}
+          scanColor="#ffffff"
+          scanOpacity={0.4}
+          enablePost
+          bloomIntensity={0.6}
+          chromaticAberration={0.002}
+          noiseIntensity={0.01}
+        />
+      </div>
       <div className="dashboard-container">
         {/* Top Section */}
         <div className="dashboard-top">
           <PlayerCard playerData={playerData} />
           <HistoryCard history={history} />
         </div>
-        
+
         {/* Bottom Section */}
         <div className="dashboard-bottom">
           <div className="courses-section">
-            <FilterContainer 
+            <FilterContainer
               allTags={allTags}
               activeFilters={activeFilters}
               toggleFilter={toggleFilter}

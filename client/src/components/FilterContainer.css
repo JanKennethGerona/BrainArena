@@ -1,5 +1,5 @@
 .filter-container {
-  background: white;
+  background: rgba(255, 255, 255, 0.49);
   border-radius: 16px;
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);

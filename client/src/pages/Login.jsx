@@ -2,36 +2,87 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import Button from '../components/Button'
 import TextField from '../components/TextField'
-import logo from '../assets/images/6.png'
+import logo from '../assets/images/6.svg'
 import './Login.css'
+import API_URL from '../config'
 
 function Login() {
   const navigate = useNavigate()
   const location = useLocation()
-  const [isRegisterMode, setIsRegisterMode] = useState(false)
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-  const [repeatPassword, setRepeatPassword] = useState('')
+  const [isLoginMode, setIsLoginMode] = useState(true)
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    displayName: ''
+  })
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (location.state?.isRegister) {
-      setIsRegisterMode(true)
+      setIsLoginMode(false)
     }
   }, [location])
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+    setError('')
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (isRegisterMode) {
-      console.log('Register:', { username, password, repeatPassword })
-    } else {
-      console.log('Login:', { username, password })
-      navigate('/dashboard')
+    setError('')
+    setLoading(true)
+
+    try {
+      const endpoint = isLoginMode ? '/api/auth/login' : '/api/auth/register'
+      const body = isLoginMode 
+        ? { username: formData.username, password: formData.password }
+        : { 
+            username: formData.username, 
+            email: formData.email, 
+            password: formData.password,
+            displayName: formData.displayName 
+          }
+
+      const response = await fetch(`${API_URL}${endpoint}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        // Save token to localStorage
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('user', JSON.stringify(data.user))
+        
+        // Redirect to dashboard
+        navigate('/dashboard')
+      } else {
+        // Handle validation errors or general error
+        if (data.errors && data.errors.length > 0) {
+          setError(data.errors.map(err => err.msg).join(', '))
+        } else {
+          setError(data.error || 'Authentication failed. Please try again.')
+        }
+      }
+    } catch (err) {
+      setError('Unable to connect to the server. Please check your connection and try again.')
+      console.error('Auth error:', err)
+    } finally {
+      setLoading(false)
     }
   }
 
   const toggleMode = () => {
-    setIsRegisterMode(!isRegisterMode)
-    setRepeatPassword('')
+    setIsLoginMode(!isLoginMode)
+    setError('')
   }
 
   const UserIcon = () => (
@@ -58,41 +109,57 @@ function Login() {
         <form className="login-form" onSubmit={handleSubmit}>
           <TextField
             type="text"
+            name="username"
             placeholder="Enter Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={formData.username}
+            onChange={handleChange}
             icon={<UserIcon />}
+            required
           />
+
+          {!isLoginMode && (
+            <>
+              <TextField
+                type="email"
+                name="email"
+                placeholder="Enter Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+
+              <TextField
+                type="text"
+                name="displayName"
+                placeholder="Enter Display Name (optional)"
+                value={formData.displayName}
+                onChange={handleChange}
+              />
+            </>
+          )}
 
           <TextField
             type="password"
+            name="password"
             placeholder="Enter Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={handleChange}
             icon={<LockIcon />}
+            required
           />
-
-          <div className={`repeat-password-wrapper ${isRegisterMode ? 'show' : ''}`}>
-            <TextField
-              type="password"
-              placeholder="Repeat Password"
-              value={repeatPassword}
-              onChange={(e) => setRepeatPassword(e.target.value)}
-              icon={<LockIcon />}
-            />
-          </div>
 
           <div className="login-footer">
             <span className="login-text">
-              {isRegisterMode ? "Already have an account?" : "Don't have an account?"}
+              {isLoginMode ? "Don't have an account?" : "Already have an account?"}
             </span>
             <button type="button" onClick={toggleMode} className="register-link">
-              {isRegisterMode ? "Login" : "Register"}
+              {isLoginMode ? "Register" : "Login"}
             </button>
           </div>
 
-          <Button type="submit" variant="primary" className="login-btn-full">
-            {isRegisterMode ? "REGISTER" : "LOG IN"}
+          {error && <div className="error-message" style={{ marginBottom: '1rem' }}>{error}</div>}
+          <Button type="submit" variant="primary" className="login-btn-full" disabled={loading}>
+            {loading ? 'Please wait...' : (isLoginMode ? "LOG IN" : "REGISTER")}
           </Button>
         </form>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
-import logo from '../assets/images/6.png'
+import logo from '../assets/images/6.svg'
 import './Landing.css'
 
 function Landing() {

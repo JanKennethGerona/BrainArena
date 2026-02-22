@@ -1,5 +1,5 @@
 .course-card {
-  background: #00B2CA;
+  background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -29,14 +29,14 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #fdfcfd;
+  color: #00B2CA;
   margin: 0 0 0.25rem 0;
 }
 
 .course-items {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.9rem;
-  color: #fdfcfd;
+  color: #333;
   margin: 0 0 1rem 0;
 }
 
@@ -51,7 +51,7 @@
   font-size: 0.75rem;
   font-weight: 500;
   color: #555;
-  background-color: #D4E9ED;
+  background-color: #00B2CA32;
   padding: 0.35rem 0.75rem;
   border-radius: 12px;
 }

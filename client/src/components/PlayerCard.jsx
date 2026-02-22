@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './PlayerCard.css'
 import Settings from './Settings'
-import userIcon from '../assets/images/Icons/user-3-fill.png'
-import settingsIcon from '../assets/images/Icons/settings-3-fill.png'
-import logoutIcon from '../assets/images/Icons/logout-box-fill.png'
+import userIcon from '../assets/images/Icons/user.svg'
+import settingsIcon from '../assets/images/Icons/settings.svg'
+import logoutIcon from '../assets/images/Icons/logout.svg'
 
 function PlayerCard({ playerData }) {
   const navigate = useNavigate()
@@ -33,12 +33,14 @@ function PlayerCard({ playerData }) {
     <>
       <div className="player-card">
         <div className="player-avatar-wrapper">
-          <img 
-            src={playerData.avatar} 
-            alt="Player Avatar" 
+          <div 
             className="player-avatar" 
             onClick={toggleDropdown}
-          />
+          >
+            <span className="avatar-initials">
+              {playerData.name?.charAt(0).toUpperCase()}
+            </span>
+          </div>
           {isDropdownOpen && (
             <div className="player-dropdown">
               <button 

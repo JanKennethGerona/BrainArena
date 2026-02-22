@@ -45,6 +45,12 @@
   align-items: center;
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
+  border-right: 1px solid rgba(0, 178, 202, 0.4);
+  padding-right: 1rem;
+}
+
+.table-cell:last-child {
+  border-right: none;
 }
 
 .rank-cell {

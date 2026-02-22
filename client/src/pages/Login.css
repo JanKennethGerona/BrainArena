@@ -130,4 +130,53 @@
   .login-form {
     padding: 2rem 1.5rem;
   }
+  
+  .form-title {
+    font-size: 1.75rem;
+  }
+  
+  .submit-btn {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 1rem;
+  }
+  
+  .login-brand {
+    font-size: 1.75rem;
+  }
+  
+  .login-logo {
+    width: 100px;
+  }
+  
+  .login-form {
+    padding: 1.75rem 1.25rem;
+    border-radius: 16px;
+    width: 100%;
+  }
+  
+  .form-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .submit-btn {
+    padding: 0.625rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .form-footer {
+    font-size: 0.85rem;
+    margin-top: 1.25rem;
+  }
+  
+  .toggle-btn {
+    font-size: 0.85rem;
+  }
 }

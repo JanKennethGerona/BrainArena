@@ -9,6 +9,11 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.settings-overlay.closing {
+  animation: fadeOut 0.3s ease-out;
 }
 
 .settings-modal {
@@ -19,19 +24,66 @@
   max-width: 800px;
   position: relative;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 5px solid rgba(0, 178, 202, 0.2);
+  animation: scaleIn 0.2s ease-out;
+}
+
+.settings-overlay.closing .settings-modal {
+  animation: scaleOut 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
 }
 
 .settings-close {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  background: #1a1a1a;
-  color: #FFFFFF;
+  background: transparent;
+  color: #00B2CA;
   border: none;
   width: 32px;
   height: 32px;
   border-radius: 50%;
   font-size: 1.25rem;
+  font-weight: 1000;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -40,7 +92,7 @@
 }
 
 .settings-close:hover {
-  background: #333333;
+  color: #e0e7f1;
 }
 
 .settings-header {
@@ -49,11 +101,13 @@
   justify-content: center;
   gap: 1rem;
   margin-bottom: 3rem;
+
 }
 
 .settings-header-icon {
   width: 50px;
   height: 50px;
+  
 }
 
 .settings-title {
@@ -63,10 +117,11 @@
   color: #06B6D4;
   margin: 0;
   letter-spacing: 0.05em;
+  
 }
 
 .settings-content {
-  background: #E0E7F1;
+  background: #e0e7f16d;
   border-radius: 16px;
   padding: 2rem;
   display: flex;

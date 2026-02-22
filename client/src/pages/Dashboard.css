@@ -1,14 +1,27 @@
 .dashboard {
   min-height: 100vh;
-  background-color: #fdfcfd;
+  background-color: #00B2CA;
   padding: 1.5rem;
   zoom: 1.045;
+  position: relative; /* Add this to create a positioning context */
+}
+
+/* Add this new class for the GridScan wrapper */
+.dashboard-bg {
+  position: fixed; /* This locks it to the viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0; /* Keeps it in the background */
 }
 
 .dashboard-container {
   max-width: 1400px;
   margin: 0 auto;
   gap: 1.5rem;
+  position: relative; /* Add this to allow z-index to work */
+  z-index: 1; /* Puts your content on top of the background */
 }
 
 /* Top Section */
@@ -17,6 +30,8 @@
   grid-template-columns: 3fr 1fr;
   gap: 2rem;
   margin-bottom: 1rem;
+  position: relative;
+  z-index: 10000;
 }
 
 /* Bottom Section */
@@ -31,8 +46,12 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  background-color: #EBEFF5;
-  border-radius: 21px;
+  background: rgba(253, 252, 253, 0.9);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.9);
   height: calc(2 * 300px + 1.5rem);
 }
 

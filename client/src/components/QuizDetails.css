@@ -25,13 +25,14 @@
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  background: #1a1a1a;
-  color: #FFFFFF;
+  background: transparent;
+  color: #00B2CA;
   border: none;
   width: 32px;
   height: 32px;
   border-radius: 50%;
   font-size: 1.25rem;
+  font-weight: 1000;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -41,11 +42,11 @@
 }
 
 .quiz-details-close:hover {
-  background: #333333;
+  color: #ffffff;
 }
 
 .quiz-details-header {
-  background: #00B2CA;
+  background: #EBEFF5;
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -70,14 +71,14 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 2rem;
   font-weight: 700;
-  color: #FFFFFF;
+  color: #00B2CA;
   margin: 0 0 0.5rem 0;
 }
 
 .quiz-details-items {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.125rem;
-  color: #FFFFFF;
+  color: #00B2CA;
   margin: 0;
   opacity: 0.9;
 }
@@ -98,7 +99,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #00B2CA;
   margin: 0 0 1rem 0;
 }
 

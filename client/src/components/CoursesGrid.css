@@ -2,13 +2,14 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
-  background-color: #EBEFF5;
-  padding: 1rem;
+  background-color: #ebeff500;
+  margin: 1rem;
   border-radius: 21px;
   height: calc(2 * 300px + 1.5rem);
   overflow-y: auto;
   scrollbar-width: none;
   grid-auto-rows: 240px;
+  max-width: 100%;
 }
 
 .courses-grid::-webkit-scrollbar {

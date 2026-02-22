@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LeaderboardTable from '../components/LeaderboardTable'
+import GridScan from '../components/GridScan'
 import './LeaderBoard.css'
+import backIcon from '../assets/images/Icons/back.svg'
+import swordIcon from '../assets/images/Icons/swords.svg'
 
 function LeaderBoard() {
   const navigate = useNavigate()
@@ -96,46 +99,67 @@ function LeaderBoard() {
 
   return (
     <div className="leaderboard-page">
-      <div className="leaderboard-header">
-        <button className="back-button" onClick={handleBackToDashboard}>
-          <img src="./src/assets/images/Icons/Back.png" alt="Back" width="40" height="40" />
-        </button>
-
-        <div className="title-dropdown-container">
-          <button 
-            className="title-dropdown" 
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          >
-            <img src="./src/assets/images/Icons/SwordsGreen.png" alt="Swords" className="title-icon" />
-            <h1 className="page-title">{selectedCourse}</h1>
-            <svg 
-              className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}
-              width="24" 
-              height="24" 
-              viewBox="0 0 24 24" 
-              fill="none"
-            >
-              <path d="M6 9L12 15L18 9" stroke="#00B2CA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-
-          {isDropdownOpen && (
-            <div className="dropdown-menu">
-              {courses.map((course, index) => (
-                <button
-                  key={index}
-                  className={`dropdown-item ${selectedCourse === course ? 'active' : ''}`}
-                  onClick={() => handleCourseSelect(course)}
-                >
-                  {course}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+      
+      {/* 1. Add the GridScan Background Layer */}
+      <div className="leaderboard-bg">
+        <GridScan
+          sensitivity={0.55}
+          lineThickness={1}
+          linesColor="#ffffff" 
+          gridScale={0.1}
+          scanColor="#ffffff"  
+          scanOpacity={0.2}    
+          enablePost
+          bloomIntensity={0.6}
+          chromaticAberration={0.002}
+          noiseIntensity={0.01}
+        />
       </div>
 
-      <LeaderboardTable data={leaderboardData[selectedCourse]} />
+      {/* 2. Wrap existing content in the foreground container */}
+      <div className="leaderboard-container">
+        <div className="leaderboard-header">
+          <button className="back-button" onClick={handleBackToDashboard}>
+            <img src={backIcon} alt="Back" width="40" height="40" />
+          </button>
+
+          <div className="title-dropdown-container">
+            <button 
+              className="title-dropdown" 
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              <img src={swordIcon} alt="Swords" className="title-icon" />
+              <h1 className="page-title">{selectedCourse}</h1>
+              <svg 
+                className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none"
+              >
+                <path d="M6 9L12 15L18 9" stroke="#00B2CA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+
+            {isDropdownOpen && (
+              <div className="dropdown-menu">
+                {courses.map((course, index) => (
+                  <button
+                    key={index}
+                    className={`dropdown-item ${selectedCourse === course ? 'active' : ''}`}
+                    onClick={() => handleCourseSelect(course)}
+                  >
+                    {course}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        <LeaderboardTable data={leaderboardData[selectedCourse]} />
+      </div>
+
     </div>
   )
 }

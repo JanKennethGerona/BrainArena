@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import GridScan from '../components/GridScan'
 import './QuizSummary.css'
 import Button from '../components/Button'
-import fireIcon from '../assets/images/Icons/fire.png'
-import fireLitIcon from '../assets/images/Icons/fire-lit.png'
+import fireIcon from '../assets/images/Icons/fire.svg'
+import fireLitIcon from '../assets/images/Icons/fire-lit.svg'
 
 function QuizSummary() {
   const location = useLocation()
@@ -103,6 +104,24 @@ function QuizSummary() {
 
   return (
     <div className="quiz-summary-container">
+      
+      {/* 1. Add the GridScan Background Layer */}
+      <div className="quiz-summary-bg">
+        <GridScan
+          sensitivity={0.55}
+          lineThickness={1}
+          linesColor="#ffffff" 
+          gridScale={0.1}
+          scanColor="#ffffff"  
+          scanOpacity={0.2}    
+          enablePost
+          bloomIntensity={0.6}
+          chromaticAberration={0.002}
+          noiseIntensity={0.01}
+        />
+      </div>
+
+      {/* 2. Your existing card is now automatically styled with glassmorphism */}
       <div className="quiz-summary-card">
         <div className="quiz-summary-header">
           <h1 className="quiz-summary-title">CONGRATULATIONS!!</h1>

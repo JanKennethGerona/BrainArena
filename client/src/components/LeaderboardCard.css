@@ -1,12 +1,15 @@
 .leaderboard-card {
-  background: #EBEFF5;
-  border-radius: 16px;
+  background: rgba(253, 252, 253, 0.9);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   height: calc(2 * 300px + 1.5rem);
   overflow-y: scroll;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.9);
 }
 
 .leaderboard-card:hover {
@@ -21,8 +24,17 @@
 .LeaderB-header {
   margin-bottom: 1rem;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.LeaderB-tittle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1.3rem;
+  color: #00B2CA;
 }
 
 .leaderboard-list {
@@ -126,7 +138,19 @@
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  object-fit: cover;
+  background: #00B2CA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.leaderboard-avatar-initial {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  user-select: none;
 }
 
 .leaderboard-name {

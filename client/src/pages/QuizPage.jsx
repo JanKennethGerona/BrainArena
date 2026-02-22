@@ -3,12 +3,12 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import './QuizPage.css'
 import Button from '../components/Button'
 import ExitConfirmationModal from '../components/ExitConfirmationModal'
-import backIcon from '../assets/images/Icons/Back.png'
-import lightbulbIcon from '../assets/images/Icons/lightbulb-fill.png'
-import logoIcon from '../assets/images/6.png'
-import questionIcon from '../assets/images/Icons/question-fill.png'
-import CheckIcon from '../assets/images/Icons/Vector-1.png'
-import WrongIcon from '../assets/images/Icons/close-circle-fill.png'
+import backIcon from '../assets/images/Icons/back.svg'
+import lightbulbIcon from '../assets/images/Icons/lightbulb-fill.svg'
+import logoIcon from '../assets/images/6.svg'
+import questionIcon from '../assets/images/Icons/question.svg'
+import CheckIcon from '../assets/images/Icons/correct.svg'
+import WrongIcon from '../assets/images/Icons/wrong.svg'
 
 function QuizPage() {
   const location = useLocation()
